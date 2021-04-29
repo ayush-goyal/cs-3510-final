@@ -23,8 +23,9 @@ class AI1():
     # an AI example that returns a random square (r, c) that you want to open
     # TODO: implement a better algorithm
     def performAI(self, boardState):
+        print(boardState)
+
         # find all the unopened squares
-        print(np.array(boardState).T)
         unopenedSquares = []
         bombsFoundSoFar = []
         for row in range(self.numRows):

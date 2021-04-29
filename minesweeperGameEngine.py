@@ -123,11 +123,13 @@ class Window(Frame):
     def create_board(self):
 
         self.ans = np.full((self.numRows, self.numCols), 0)
-        self.bombLocations = [(i % self.numCols, int(i/self.numCols)) for i, c in enumerate(self.gridInput) if c == 9 or c == '9']
+        self.bombLocations = []
         # Add numbers 0-8 to the ans grid 
         for row in range(self.numRows):
             for col in range(self.numCols):
-                self.ans[col][row] = self.gridInput[row * self.numCols + col]
+                self.ans[row][col] = self.gridInput[row * self.numCols + col]
+                if self.ans[row][col] == 9:
+                    self.bombLocations.append((row, col))
 
         print(f"starting board\n{self.ans}")
         print(f"location of bombs: {self.bombLocations}")

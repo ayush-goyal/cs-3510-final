@@ -11,7 +11,7 @@ import argparse
 # Here, we are creating our class, Window, and inheriting from the Frame
 # class. Frame is a class from the tkinter module. (see Lib/tkinter/__init__)
 class Window(Frame):
-
+    
     # Define settings upon initialization. Here you can specify
     def __init__(self, testcase_filename, master=None):
         
@@ -36,7 +36,6 @@ class Window(Frame):
         self.numBombs = int(data['bombs'])
         self.safeSquare = (int(safe[0]), int(safe[1]))
         self.gridInput = data['board']
-
         print(self.numRows, self.numCols, self.numBombs, self.safeSquare, self.gridInput)
 
         self.init_window()

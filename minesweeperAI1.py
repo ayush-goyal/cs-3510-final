@@ -56,11 +56,11 @@ class AI1():
 
                 numPossible = len(possible)
                 for poss in possible:
-                    print(val / numPossible)
+                    # print(val / numPossible)
                     prob[poss[0]][poss[1]] = max(
                         prob[poss[0]][poss[1]], val / numPossible)
 
-        print(prob)
+        # print(prob)
 
         # find all the unopened squares
         unopenedSquares = []
@@ -79,5 +79,5 @@ class AI1():
         else:
             # Otherwise, pick a random square and open it
             squareToOpen = random.choice(unopenedSquares)
-            print(f"Square to open is {squareToOpen}")
+            # print(f"Square to open is {squareToOpen}")
             return self.open_square_format(squareToOpen)

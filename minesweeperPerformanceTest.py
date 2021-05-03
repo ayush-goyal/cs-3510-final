@@ -220,7 +220,7 @@ class Window(Frame):
                 self.outcome = -1
                 print(f"WRONG BOMB LIST. expected: {self.bombLocations}, received: {userAnswer}. You performed {self.numDigs} digs.")
 
-            root.destroy()
+            self.master.destroy()
 
     """
     Each time you click the button, We would recommend you to perform the following loop in your algorithm:
@@ -257,54 +257,54 @@ print(sys.argv)
 
 """ import minesweeper game engine etc """
 
-if len(sys.argv) < 2:
-    print("usage: -f <file_name.json> <algoType>, or -g <x_dim> <y_dim> <num_bombs> <safe_x> <safe_y> <algoType> <numGames>")
+# if len(sys.argv) < 2:
+#     print("usage: -f <file_name.json> <algoType>, or -g <x_dim> <y_dim> <num_bombs> <safe_x> <safe_y> <algoType> <numGames>")
 
-elif sys.argv[1] in ["--generate", "-g"] and len(sys.argv) == 9:
-    numGames = int(sys.argv[8])
-    numWins = 0
-    numLosses = 0
-    totalDigs = 0
-    totalTime = 0
+# elif sys.argv[1] in ["--generate", "-g"] and len(sys.argv) == 9:
+#     numGames = int(sys.argv[8])
+#     numWins = 0
+#     numLosses = 0
+#     totalDigs = 0
+#     totalTime = 0
 
-    for i in range(numGames):
-        print(f"match={i+1}")
-        root = Tk()
-        root.geometry("800x800")
+#     for i in range(numGames):
+#         print(f"match={i+1}")
+#         root = Tk()
+#         root.geometry("800x800")
         
-        app = Window(master = root)
-        app.setupGenerate(numRows = int(sys.argv[2]), numCols = int(sys.argv[3]), numBombs = int(sys.argv[4]), safeSquare = (int(sys.argv[5]), int(sys.argv[6])), AIType = int(sys.argv[7]))
-        root.mainloop()
+#         app = Window(master = root)
+#         app.setupGenerate(numRows = int(sys.argv[2]), numCols = int(sys.argv[3]), numBombs = int(sys.argv[4]), safeSquare = (int(sys.argv[5]), int(sys.argv[6])), AIType = int(sys.argv[7]))
+#         root.mainloop()
 
-        outcome = "ERROR"
-        totalDigs += app.numDigs
-        totalTime += app.time
-        if app.outcome == -1: 
-            outcome = "Incorrect Bomb List"
-            numLosses += 1
-        elif app.outcome == 1:
-            outcome = "Correct Bomb List"
-            numWins += 1
+#         outcome = "ERROR"
+#         totalDigs += app.numDigs
+#         totalTime += app.time
+#         if app.outcome == -1: 
+#             outcome = "Incorrect Bomb List"
+#             numLosses += 1
+#         elif app.outcome == 1:
+#             outcome = "Correct Bomb List"
+#             numWins += 1
 
-        print("\n************\n")
+#         print("\n************\n")
 
-    print(f"totalDigs={totalDigs}, averageDigs={totalDigs/numGames}, totalTime={round(totalTime, 3)}, averageTime={round(totalTime/numGames, 3)}, numberOfTimeCorrectBombListReturned={numWins}, numberOfTimeIncorrectBombListReturned={numLosses}")    
+#     print(f"totalDigs={totalDigs}, averageDigs={totalDigs/numGames}, totalTime={round(totalTime, 3)}, averageTime={round(totalTime/numGames, 3)}, numberOfTimeCorrectBombListReturned={numWins}, numberOfTimeIncorrectBombListReturned={numLosses}")    
 
-elif sys.argv[1] in ["--file", "-f"] and len(sys.argv) == 4:
-    root = Tk()
-    root.geometry("800x800")
+# elif sys.argv[1] in ["--file", "-f"] and len(sys.argv) == 4:
+#     root = Tk()
+#     root.geometry("800x800")
     
-    app = Window(master = root)
-    app.setupFile(testcase_filename = sys.argv[2], AIType = int(sys.argv[3]))
-    root.mainloop()    
+#     app = Window(master = root)
+#     app.setupFile(testcase_filename = sys.argv[2], AIType = int(sys.argv[3]))
+#     root.mainloop()
 
-    outcome = "ERROR"
-    if app.outcome == -1: 
-        outcome = "Incorrect Bomb List"
-    elif app.outcome == 1:
-        outcome = "Correct Bomb List"
+#     outcome = "ERROR"
+#     if app.outcome == -1: 
+#         outcome = "Incorrect Bomb List"
+#     elif app.outcome == 1:
+#         outcome = "Correct Bomb List"
 
-    print(f"totalDigs={app.numDigs}, totalTime={round(app.time, 3)}, outcome={outcome}")    
+#     print(f"totalDigs={app.numDigs}, totalTime={round(app.time, 3)}, outcome={outcome}")    
 
-else:
-    print("usage: -f <file_name.json> <algoType>, or -g <x_dim> <y_dim> <num_bombs> <safe_x> <safe_y> <algoType> <numGames>")
+# else:
+#     print("usage: -f <file_name.json> <algoType>, or -g <x_dim> <y_dim> <num_bombs> <safe_x> <safe_y> <algoType> <numGames>")
